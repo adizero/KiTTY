@@ -65,3 +65,31 @@ Simple guide to setup the compile environment:
 - When all is installed, to open the SHELL execute `$MinGW\msys\1.0\msys.bat`. Then from from this shell you can compile. Example: `cd $KiTTY_DIR/0.70_My_PuTTY/windows` and `make -f MAKEFILE.MINGW 9bis`.
 
 Original website is [https://kitty.9bis.com/](https://kitty.9bis.com/ "KiTTY website").
+
+### How to compile in Linux
+
+Major differences:
+
+Mouse hover support (mode 1003)
+Compile with mingw.
+
+For example use this Arch based docker with installed mingw (https://github.com/mdimura/docker-mingw-arch)
+
+    git clone https://github.com/mdimura/docker-mingw-arch
+    cd docker-mingw-arch
+    docker build -t docker-mingw-arch .
+    docker run -it docker-mingw-arch bash
+
+    # within docker (svn is needed only for kitty compilation, not putty)
+    yay -S iputils vim svn
+
+    # install upx (the executable packer)
+    yay -S upx
+    
+    # checkout and build KiTTY
+    git clone https://github.com/adizero/KiTTY
+    cd KiTTY/0.73_My_PuTTY/windows/
+    # build interesting executables (use Make target putty.exe to build only the main one)
+    # the cross target has one caveat - ignores -j4 and runs only on single core
+    # compilation will modify one source file - comments one line there - ignore that
+    make -e TOOLPATH=/usr/bin/i686-w64-mingw32- -f MAKEFILE.MINGW -j4 cross
