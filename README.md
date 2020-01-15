@@ -68,9 +68,10 @@ Original website is [https://kitty.9bis.com/](https://kitty.9bis.com/ "KiTTY web
 
 ### How to compile in Linux
 
-Major differences:
+Major differences (of this fork):
 
-Mouse hover support (mode 1003)
+* Mouse hover support (mode 1003)
+
 Compile with mingw.
 
 For example use this Arch based docker with installed mingw (https://github.com/mdimura/docker-mingw-arch)
