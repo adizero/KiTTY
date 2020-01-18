@@ -93,7 +93,7 @@ For example use this Arch based docker with installed mingw (https://github.com/
     git clone https://github.com/adizero/KiTTY
     cd KiTTY/0.73_My_PuTTY/windows/
     # build KiTTY executables (use Make target putty.exe to build only the main one; this target's binary looks to be broken in Windows 7?)
-    # use phe proper cross target instead even though it has one caveat, it ignores -j4 and runs only on single core (however the resulting binary is always good)
+    # use the proper cross target instead even though it has one caveat, it ignores -j4 and runs only on single core (however the resulting binary is always good)
     # the cross target will use upx to compress the .exe files and as a last step will try moving them (which will fail unless you have /build directory, but that does not matter)
     # compilation will modify one source file (comments one line there, ignore that)
     make -e TOOLPATH=/usr/bin/i686-w64-mingw32- -f MAKEFILE.MINGW -j4 cross
