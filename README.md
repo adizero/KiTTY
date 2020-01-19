@@ -72,6 +72,8 @@ Major differences (of this fork):
 
 * Mouse hover support (mode 1003)
 
+* Cursor style support (changing of cursor shape and blinking via XTerm escape sequences - DECSCUSR)
+
 * Shift/Ctrl/Alt + Fn keys and small keypad support (XTerm like codes), Ctrl-Backspace like in XTerm
 
 Compile with mingw.
@@ -97,3 +99,5 @@ For example use this Arch based docker with installed mingw (https://github.com/
     # the cross target will use upx to compress the .exe files and as a last step will try moving them (which will fail unless you have /build directory, but that does not matter)
     # compilation will modify one source file (comments one line there, ignore that)
     make -e TOOLPATH=/usr/bin/i686-w64-mingw32- -f MAKEFILE.MINGW -j4 cross
+    # only putty.exe with upx (this produces functioning binary)
+    make -e TOOLPATH=/usr/bin/i686-w64-mingw32- -f MAKEFILE.MINGW -j4 putty.exe && upx --best --compress-icons=2 --compress-exports=0 putty.exe
